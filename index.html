@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
 	<link rel="shortcut icon" href="#">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 	<title>Pokemon!</title>
 </head>
-<body>
-	<div class="main-container">
-		<form action="" class="search-container">
-			<input type="text" name="search-term" class="search-term" placeholder="Enter pokemon name">
-			<button type="submit">Search</button>
-		</form>
-		<div class="card-container">
-			<div class="img-container">
-				<img src="" alt="pokemon">
+
+<body class="bg-light ">
+	<div class="main-container bg-secondary bg-gradient d-flex flex-column justify-content-center align-items-center">
+		<form class="row g-3">
+			<div class="col-auto">
+				<label for="pokemon-input" class="visually-hidden">Enter Pokemon</label>
+				<input type="text" class="form-control" id="input" placeholder="Enter Pokemon">
 			</div>
-			<h3 class="pokemon-name"></h3>
-			<h5 class="weight"></h5>
-			<h5 class="base-experience"></h5>
-			<div class="abilities"></div>
+			<div class="col-auto">
+				<button type="submit" class="btn btn-primary mb-3">Search</button>
+			</div>
+		</form>
+		<div class="card card-container" style="width: 18rem;">
+			<img src="" class="card-img-top" alt="pokemon">
+			<div class="card-body">
+				<h5 class="card-title pokemon-name"></h5>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item weight"></li>
+				<li class="list-group-item base-experience"></li>
+			</ul>
+			<div class="card-body abilities">
+				
+			</div>
 		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+		crossorigin="anonymous"></script>
 	<script src="app.js"></script>
 </body>
+
 </html>

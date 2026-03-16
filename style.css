@@ -1,4 +1,11 @@
 :root {
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: #bebebe;
+}
+
+.main-container {
+	height: 100svh;
+}
+
+.card-container {
+	min-height: 500px;
 }
