@@ -2,12 +2,17 @@ let apiEndpoint = `https://pokeapi.co/api/v2/pokemon/`;
 const cardContainer = document.querySelector(".card-container")
 
 
-let input = document.querySelector("#input");
 document.querySelector(".btn-primary").addEventListener("click", async evt => {
 	evt.preventDefault();
-	let url = `${apiEndpoint}${input.value}`;
-	let result = await getData(url);
+	
+	if (!evt.target.form.checkValidity()) {
+		// Guard Clause - Early Return
+		return
+	}
 
+	let url = `${apiEndpoint}${evt.target.form[0].value}`;
+	let result = await getData(url);
+	
 	if (result) {
 		render(result);
 	}
@@ -31,6 +36,12 @@ async function getData(url) {
 function renderErrorHandler(err) {
 	cardContainer.classList.add("hidden")
 	let p = document.createElement("p")
+	p.className = "error-msg"
+	
+	// Optional Chaining Operator
+	if (cardContainer.nextElementSibling?.className === "error-msg") {
+		cardContainer.nextElementSibling.remove()
+	}
 
 	if (err.cause === 404) {
 		p.textContent = `Pokemon not found. Try another Pokemon.`
@@ -47,6 +58,14 @@ function renderErrorHandler(err) {
 		cardContainer.insertAdjacentElement("afterend", p)
 	}
 }
+
+/* 
+	? Challenge
+	* if you trigger an error
+	* if you then grab a pokemon
+	* the error perists
+	* ensure that if an error exists, it is cleared prior to rendering card
+*/
 
 function render(data) {
 	const img = document.querySelector(".card-img-top");
