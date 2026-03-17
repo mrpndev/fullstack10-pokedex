@@ -9,3 +9,8 @@
 .card-container {
 	min-height: 500px;
 }
+
+.abilities {
+	display: flex;
+	gap: 0.5em;
+}

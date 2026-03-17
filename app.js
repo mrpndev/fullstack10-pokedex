@@ -26,8 +26,25 @@ function render(data) {
 	const weight = document.querySelector(".weight");
 	const baseExp = document.querySelector(".base-experience");
 	const abilities = document.querySelector(".abilities");
+	console.dir(abilities.textContent)
+	// Simple solution to childElementCount
+	abilities.textContent = ""
 	img.src = data.sprites.front_default;
 	pokemonName.textContent = capitalizeFirstLetter(data.name)
+	weight.textContent = `Weight: ${data.weight}`
+	baseExp.textContent = `Base Experience: ${data.base_experience}`
+	
+	// if (abilities.childElementCount) {
+	// 	abilities.replaceChildren()
+	// }
+
+	data.abilities.forEach(a => {
+		console.log(a.ability.name)
+		let aBtn = document.createElement("a")
+		aBtn.classList.add("btn", "btn-primary")
+		aBtn.textContent = capitalizeFirstLetter(a.ability.name)
+		abilities.appendChild(aBtn)
+	})
 }
 
 function capitalizeFirstLetter(str) {
@@ -36,5 +53,3 @@ function capitalizeFirstLetter(str) {
 		.map(w => `${w[0].toUpperCase()}${w.slice(1)}`)
 		.join(" ");
 }
-
-console.log(capitalizeFirstLetter("paul is really cool"));
