@@ -10,12 +10,14 @@ document.querySelector(".btn-primary").addEventListener("click", async evt => {
 		return
 	}
 
-	let url = `${apiEndpoint}${evt.target.form[0].value}`;
+	let url = `${apiEndpoint}${evt.target.form[0].value.trim()}`;
 	let result = await getData(url);
 	
 	if (result) {
 		render(result);
 	}
+
+	evt.target.form[0].value = ""
 });
 
 async function getData(url) {
@@ -33,15 +35,19 @@ async function getData(url) {
 	}
 }
 
+function clearError() {
+	const err = document.querySelector(".error-msg")
+	if (err) {
+		err.remove()
+	}
+}
+
 function renderErrorHandler(err) {
 	cardContainer.classList.add("hidden")
 	let p = document.createElement("p")
 	p.className = "error-msg"
-	
-	// Optional Chaining Operator
-	if (cardContainer.nextElementSibling?.className === "error-msg") {
-		cardContainer.nextElementSibling.remove()
-	}
+
+	clearError()
 
 	if (err.cause === 404) {
 		p.textContent = `Pokemon not found. Try another Pokemon.`
@@ -73,6 +79,8 @@ function render(data) {
 	const weight = document.querySelector(".weight");
 	const baseExp = document.querySelector(".base-experience");
 	const abilities = document.querySelector(".abilities");
+
+	clearError()
 
 	// Simple solution to childElementCount
 	abilities.textContent = ""

@@ -8,6 +8,7 @@
 
 .card-container {
 	min-height: 500px;
+	box-shadow: 0px 10px 20px -10px;
 }
 
 .abilities {
@@ -17,4 +18,41 @@
 
 .hidden {
 	display: none !important;
+}
+.abilities {
+	flex-wrap: wrap;
+
+	> .btn {
+		text-wrap: nowrap;
+	}
+}
+
+@media (max-width: 1024px) {
+	/* standard size tablets */
+}
+
+@media (max-width: 768px) {
+	/* tablets and large phones */
+}
+
+@media (max-width: 430px) {
+	/* phones */
+	.card-container {
+		width: 100% !important;
+		height: 100svh !important;
+	}
+
+	form {
+		width: 100%;
+		justify-content: space-around;
+		margin-top: 0.75rem !important;
+	}
+
+	.abilities {
+		flex: 0 1;
+
+		> .btn {
+			flex-shrink: 1;
+		}
+	}
 }
